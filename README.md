@@ -1,5 +1,3 @@
-# wup
-
 The online Social Media Store.
 
 ## Getting Started
