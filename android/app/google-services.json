@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "623260496804",
+    "firebase_url": "https://wupin-b4a48.firebaseio.com",
+    "project_id": "wupin-b4a48",
+    "storage_bucket": "wupin-b4a48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623260496804:android:7f5fb93cd911b4d7",
+        "android_client_info": {
+          "package_name": "in.wup.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "623260496804-fs9tpqk5k90i8uk5tgrmm45gahoriv5s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.wup.android",
+            "certificate_hash": "79593bc9ffbe0a4cc6606d632e92ccaa6fb5a4f4"
+          }
+        },
+        {
+          "client_id": "623260496804-uku7d3ccpatqsuoe8o13rp30nrpl7si0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEB3ArIaJgHBmN_LK1ejSjGqQ6noZ3ntE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "623260496804-uku7d3ccpatqsuoe8o13rp30nrpl7si0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
