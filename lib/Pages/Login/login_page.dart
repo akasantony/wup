@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_country_picker/flutter_country_picker.dart';
 import 'package:wup/Models/user.dart';
-
+import 'package:wup/Pages/User/home.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(left: 20, bottom: 10.0),
+            margin: EdgeInsets.only(bottom: 10.0),
             width: 300.0,
             child: TextField(
               decoration: InputDecoration(
@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(left: 20, top: 10.0),
+            margin: EdgeInsets.only(top: 10.0),
             width: 300.0,
             child: TextField(
               obscureText: _obscureText,
@@ -99,17 +99,22 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Container(
             padding: EdgeInsets.only(top: 40.0),
-            margin: EdgeInsets.only(left:20),
             width: 300.0,
             height: 90.0,
             child: RaisedButton(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3.0)),
               padding: const EdgeInsets.all(8.0),
-              elevation: 5.0,
+              elevation: 1.0,
               highlightColor: Colors.blueAccent,
               textColor: Colors.white,
               color: Colors.blue,
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context,
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ),
+                );
+              },
               child: new Text("Login", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),),
             ),
           )
@@ -122,9 +127,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomPadding: false,
-        body: Container(
-            child: loginPageContainer
-        )
+        body: loginPageContainer
     );
   }
 }

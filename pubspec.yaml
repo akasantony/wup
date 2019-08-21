@@ -22,6 +22,8 @@ dependencies:
   firebase_auth:
   flutter_country_picker:
   path_provider:
+  video_player: ^0.10.1+6
+  font_awesome_flutter:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

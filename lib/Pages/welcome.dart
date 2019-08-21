@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wup/Constants/paths.dart';
 import 'package:flutter_country_picker/flutter_country_picker.dart';
 import 'package:wup/Models/user.dart';
-import 'package:wup/Pages/User/Login/login_page.dart';
+import 'package:wup/Pages/Login/login_page.dart';
 //import 'package:path/path.dart';
 import 'dart:io';
 

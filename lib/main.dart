@@ -12,6 +12,7 @@ class Wup extends StatelessWidget {
       title: "Wup",
       theme: ThemeData(
           primarySwatch: Colors.red,
+          primaryColorBrightness: Brightness.light,
           unselectedWidgetColor:Colors.white
       ),
       routes: {
