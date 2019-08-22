@@ -19,6 +19,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   TabController _controller;
   bool _flipButtonState = true;
   bool _showPopUpState = false;
+  double _height = 0;
 
   Animation<double> _turns;
   AnimationController _animationController;
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   void initState() {
     super.initState();
     _controller = new TabController(length: 3, vsync: this);
-    _animationController = AnimationController(vsync: this, duration: Duration(seconds: 1));
+    _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
   }
 
   @override
@@ -50,85 +51,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   _onFlipsButtonTap () {
 //    _turnsNew = Tween<double>(begin: 0, end: 0.5).animate(_turns);
     _flipButtonState? _animationController.forward(): _animationController.reverse();
+    _flipButtonState? _height = 150: _height = 0;
     _flipButtonState = !_flipButtonState;
     setState(() {
       _showPopUpState = !_showPopUpState;
     });
     print("Button tapped");
-  }
-
-  _showPopUp () {
-    if(_showPopUpState) {
-      return Container(
-        margin: EdgeInsets.only(top: 200),
-        color: Colors.transparent,
-        width: 100,
-        height: 150,
-        child: Column(
-          children: <Widget>[
-            Container(
-              margin: const EdgeInsets.only(top: 10),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.videocam),
-                  Text("Video Flip")
-                ],
-              ),
-              decoration: BoxDecoration(
-                color: Colors.redAccent,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.all(Radius.circular(10))
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 10),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.image),
-                  Text("Image Flip")
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.redAccent,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 10),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.audiotrack),
-                  Text("Audio Flip")
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.redAccent,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 10),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.gif),
-                  Text("Gif Flip")
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.redAccent,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-    else {
-      return SizedBox();
-    }
   }
 
   Widget homePageWidget() {
@@ -252,22 +180,95 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 ),
               ),
               Center(
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(top: 340),
-                      child: GestureDetector(
-                        child: RotationTransition(
-                          turns: _animationController,
-                          child: Icon(Icons.camera, size: 90, color: Colors.redAccent,),
+                child: Container(
+//                  color: Colors.orange,
+                  height: 300,
+                  margin: EdgeInsets.only(top: 300),
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(top: 200),
+                        child: GestureDetector(
+                          child: RotationTransition(
+                            turns: _animationController,
+                            child: Icon(Icons.camera, size: 90, color: Colors.redAccent,),
+                          ),
+                          onVerticalDragUpdate: _onFlipsButtonDragUp,
+                          onTap: _onFlipsButtonTap,
                         ),
-                        onVerticalDragUpdate: _onFlipsButtonDragUp,
-                        onTap: _onFlipsButtonTap,
                       ),
-                    ),
-                    _showPopUp(),
-                  ],
-                ),
+//                    _showPopUp(),
+                      AnimatedContainer(
+                        margin: EdgeInsets.only(top: 50),
+                        duration: Duration(milliseconds: 500),
+                        width: 100.0,
+                        height: _height,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                margin: const EdgeInsets.only(top: 10),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(Icons.videocam),
+                                    Text("Video Flip")
+                                  ],
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Colors.redAccent,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.all(Radius.circular(10))
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(top: 10),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(Icons.image),
+                                    Text("Image Flip")
+                                  ],
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Colors.redAccent,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.all(Radius.circular(10))
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(top: 10),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(Icons.audiotrack),
+                                    Text("Audio Flip")
+                                  ],
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Colors.redAccent,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.all(Radius.circular(10))
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(top: 10),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(Icons.gif),
+                                    Text("Gif Flip")
+                                  ],
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Colors.redAccent,
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.all(Radius.circular(10))
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
               )
             ],
           ),
